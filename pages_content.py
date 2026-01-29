@@ -2,13 +2,15 @@
 
 def get_profile_data():
     return {
-        "group_name": "Nama Grup Kamu Di Sini",
+        "group_name": "Byte Syntech Official",
         "description": """
-            Tuliskan deskripsi grup kamu di sini. 
-            Kamu bisa menceritakan tentang visi, misi, atau kegiatan rutin yang dilakukan.
-            Ini adalah tempat untuk memperkenalkan siapa kalian kepada pengunjung.
+            Byte Syntech School adalah sebuah grup pembelajaran yang berfokus pada pengembangan
+            dan pemahaman AI serta teknologi modern, dengan penekanan utama pada kecerdasan buatan,
+            yang menjadi wadah kolaboratif bagi para peserta untuk belajar, berbagi insight, mengasah keterampilan,
+            dan mengikuti perkembangan teknologi masa depan secara kreatif dan inovatif.
+.
         """,
-        "image_url": "https://via.placeholder.com/400" # Ganti dengan path file foto kamu, misal: "assets/foto_grup.jpg"
+        "image_url": "dwonload/Gemini_Generated_Image_id44k7id44k7id44.jpg"  # Ganti dengan path file foto kamu, misal: "assets/foto_grup.jpg"
     }
 
 def get_articles_data(page_number):
@@ -18,8 +20,8 @@ def get_articles_data(page_number):
     all_pages = {
         1: [ # Halaman 2
             {
-                "title": "Artikel Terbaik Murid A",
-                "summary": "Ringkasan singkat tentang artikel ini...",
+                "title": "Artikel NN",
+                "summary": "Deskripsi singkat tentang artikel NN...",
                 "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
                 "image_url": "https://via.placeholder.com/300"
             },
@@ -32,25 +34,43 @@ def get_articles_data(page_number):
         ],
         2: [ # Halaman 3
             {
-                "title": "Karya Kreatif Hal 3",
-                "summary": "Deskripsi singkat...",
-                "full_content": "Isi lengkap konten halaman 3.",
+                "title": "Artikel NN",
+                "summary": "Deskripsi singkat tentang artikel NN...",
+                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
+                "image_url": "https://via.placeholder.com/300"
+            },
+            {
+                "title": "Karya Literasi Murid B",
+                "summary": "Ringkasan singkat tentang karya B...",
+                "full_content": "Ini adalah detail dari karya literasi murid B.",
                 "image_url": "https://via.placeholder.com/300"
             }
         ],
         3: [ # Halaman 4
              {
-                "title": "Inspirasi Pagi",
-                "summary": "Deskripsi singkat...",
-                "full_content": "Isi lengkap konten halaman 4.",
+                "title": "Artikel NN",
+                "summary": "Deskripsi singkat tentang artikel NN...",
+                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
+                "image_url": "https://via.placeholder.com/300"
+            },
+            {
+                "title": "Karya Literasi Murid B",
+                "summary": "Ringkasan singkat tentang karya B...",
+                "full_content": "Ini adalah detail dari karya literasi murid B.",
                 "image_url": "https://via.placeholder.com/300"
             }
         ],
         4: [ # Halaman 5
              {
-                "title": "Catatan Akhir Pekan",
-                "summary": "Deskripsi singkat...",
-                "full_content": "Isi lengkap konten halaman 5.",
+                "title": "Artikel NN",
+                "summary": "Deskripsi singkat tentang artikel NN...",
+                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
+                "image_url": "https://via.placeholder.com/300"
+            },
+            {
+                "title": "Karya Literasi Murid B",
+                "summary": "Ringkasan singkat tentang karya B...",
+                "full_content": "Ini adalah detail dari karya literasi murid B.",
                 "image_url": "https://via.placeholder.com/300"
             }
         ]

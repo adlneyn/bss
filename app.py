@@ -2,7 +2,7 @@ import streamlit as st
 from pages_content import get_profile_data, get_articles_data, get_thanks_data
 
 # Konfigurasi Halaman
-st.set_page_config(page_title="Web Grup & Artikel", layout="wide")
+st.set_page_config(page_title="Official Byte Syntech", layout="wide")
 
 # Styling Custom untuk Sidebar dan Detail
 st.markdown("""
@@ -28,7 +28,7 @@ st.markdown("""
 
 def main():
     # Sidebar Navigasi
-    st.sidebar.title("📌 Navigasi")
+    st.sidebar.title("Menu")
     menu = ["Profil Grup", "Artikel Terpopuler (Hal 2)", "Karya Murid (Hal 3)", 
             "Inspirasi (Hal 4)", "Catatan Kelas (Hal 5)", "Terima Kasih"]
     choice = st.sidebar.radio("Pilih Halaman:", menu)
