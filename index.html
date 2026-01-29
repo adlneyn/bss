@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bytesyntech - Grup & Artikel Murid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .sidebar-link.active { background-color: #3b82f6; color: white; }
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50 flex h-screen overflow-hidden">
+
+    <!-- SIDEBAR KIRI -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex-shrink-0 flex flex-col">
+        <div class="p-6 border-b border-gray-200">
+            <h1 class="text-xl font-bold text-blue-600">Bytesyntech</h1>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <button onclick="showPage('page1')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3 active" id="btn-page1">
+                <i data-lucide="user"></i> Profil Grup
+            </button>
+            <button onclick="showPage('page2')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3" id="btn-page2">
+                <i data-lucide="book-open"></i> Artikel Murid (1)
+            </button>
+            <button onclick="showPage('page3')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3" id="btn-page3">
+                <i data-lucide="pen-tool"></i> Artikel Murid (2)
+            </button>
+            <button onclick="showPage('page4')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3" id="btn-page4">
+                <i data-lucide="star"></i> Artikel Murid (3)
+            </button>
+            <button onclick="showPage('page5')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3" id="btn-page5">
+                <i data-lucide="file-text"></i> Artikel Murid (4)
+            </button>
+            <button onclick="showPage('page6')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3" id="btn-page6">
+                <i data-lucide="heart"></i> Terima Kasih
+            </button>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 overflow-y-auto p-8 relative">
+        
+        <!-- HALAMAN 1: PROFIL -->
+        <section id="page1" class="page active max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Profil & Deskripsi Grup</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="w-full md:w-1/3 bg-gray-200 rounded-xl aspect-square flex items-center justify-center overflow-hidden">
+                    <img id="img-profile" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80" alt="Foto Grup" class="object-cover w-full h-full">
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Tentang Bytesyntech</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Tuliskan deskripsi grup kamu di sini. Bytesyntech adalah tempat berkumpulnya murid-murid kreatif yang ingin belajar bersama tentang teknologi dan literasi.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Kamu bisa mengganti teks ini nanti di file index.html dengan teks aslimu sendiri.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEMPLATE HALAMAN 2-5: ARTIKEL -->
+        <section id="page2" class="page max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 1</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="list-page2">
+                <!-- Card Item -->
+                <div onclick="showDetail('Artikel Murid A', 'Deskripsi lengkap artikel murid A yang sangat menginspirasi...', 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Artikel Murid A</h4>
+                        <p class="text-gray-500 text-sm line-clamp-2">Klik untuk membaca detail artikel yang dibuat oleh murid berbakat ini.</p>
+                    </div>
+                </div>
+                <!-- Card Item -->
+                <div onclick="showDetail('Artikel Murid B', 'Detail lengkap konten murid B...', 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=500&q=80')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold text-lg mb-2">Artikel Murid B</h4>
+                        <p class="text-gray-500 text-sm line-clamp-2">Deskripsi singkat karya tulis yang luar biasa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman 3, 4, 5 (Strukturnya sama dengan Page 2) -->
+        <section id="page3" class="page max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 2</h2>
+            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
+        </section>
+        <section id="page4" class="page max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 3</h2>
+            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
+        </section>
+        <section id="page5" class="page max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 4</h2>
+            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
+        </section>
+
+        <!-- HALAMAN 6: TERIMA KASIH -->
+        <section id="page6" class="page max-w-4xl mx-auto">
+            <div class="text-center py-20 bg-white rounded-3xl shadow-sm border border-gray-100">
+                <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="thumbs-up" class="text-blue-600 w-10 h-10"></i>
+                </div>
+                <h2 class="text-4xl font-bold mb-4">Terima Kasih!</h2>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto">Kami sangat menghargai kunjungan Anda. Untuk mendapatkan update terbaru, silakan bergabung di channel WhatsApp kami.</p>
+                <a href="https://whatsapp.com/channel/xxxxxx" target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition shadow-lg shadow-green-200">
+                    <i data-lucide="message-circle"></i> Buka Channel WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <!-- VIEW DETAIL OVERLAY -->
+        <div id="detail-overlay" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto p-8">
+            <button onclick="closeDetail()" class="fixed top-8 right-8 bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="max-w-3xl mx-auto">
+                <img id="detail-img" src="" class="w-full h-80 object-cover rounded-2xl mb-8">
+                <h2 id="detail-title" class="text-4xl font-bold mb-6"></h2>
+                <div id="detail-content" class="text-lg text-gray-600 leading-relaxed space-y-4"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Inisialisasi Ikon
+        lucide.createIcons();
+
+        // Navigasi Halaman
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            // Tampilkan halaman terpilih
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update UI Sidebar
+            document.querySelectorAll('.sidebar-link').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + pageId).classList.add('active');
+
+            // Tutup detail jika sedang terbuka
+            closeDetail();
+        }
+
+        // Fungsi Detail
+        function showDetail(title, content, imgSrc) {
+            const overlay = document.getElementById('detail-overlay');
+            document.getElementById('detail-title').innerText = title;
+            document.getElementById('detail-content').innerText = content;
+            document.getElementById('detail-img').src = imgSrc;
+            overlay.classList.remove('hidden');
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-overlay').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
