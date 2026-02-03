@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bytesyntech - Grup & Artikel Murid</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
@@ -13,14 +12,32 @@
         .sidebar-link.active { background-color: #3b82f6; color: white; }
         .page { display: none; }
         .page.active { display: block; }
+        
+        /* Transisi halus untuk sidebar mobile */
+        #sidebar { transition: transform 0.3s ease-in-out; }
+        @media (max-width: 768px) {
+            #sidebar.closed { transform: translateX(-100%); }
+            #sidebar.open { transform: translateX(0); }
+        }
     </style>
 </head>
-<body class="bg-gray-50 flex h-screen overflow-hidden">
+<body class="bg-gray-50 flex h-screen overflow-hidden text-gray-800">
 
-    <!-- SIDEBAR KIRI -->
-    <aside class="w-64 bg-white border-r border-gray-200 flex-shrink-0 flex flex-col">
-        <div class="p-6 border-b border-gray-200">
+    <!-- TOMBOL MENU MOBILE (Hanya muncul di HP) -->
+    <div class="md:hidden fixed top-0 left-0 right-0 bg-white border-b z-40 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-blue-600">Bytesyntech</h1>
+        <button onclick="toggleSidebar()" class="p-2 bg-gray-100 rounded-lg">
+            <i data-lucide="menu"></i>
+        </button>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 flex-shrink-0 flex flex-col transform md:relative md:translate-x-0 closed shadow-xl md:shadow-none">
+        <div class="p-6 border-b border-gray-200 flex justify-between items-center">
             <h1 class="text-xl font-bold text-blue-600">Bytesyntech</h1>
+            <button onclick="toggleSidebar()" class="md:hidden p-2 hover:bg-gray-100 rounded-full">
+                <i data-lucide="x"></i>
+            </button>
         </div>
         <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
             <button onclick="showPage('page1')" class="sidebar-link w-full text-left p-3 rounded-lg hover:bg-gray-100 transition flex items-center gap-3 active" id="btn-page1">
@@ -44,123 +61,137 @@
         </nav>
     </aside>
 
+    <!-- OVERLAY KLIK (Untuk menutup sidebar di HP) -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden"></div>
+
     <!-- MAIN CONTENT -->
-    <main class="flex-1 overflow-y-auto p-8 relative">
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 mt-16 md:mt-0">
         
         <!-- HALAMAN 1: PROFIL -->
         <section id="page1" class="page active max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Profil & Deskripsi Grup</h2>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8">
-                <div class="w-full md:w-1/3 bg-gray-200 rounded-xl aspect-square flex items-center justify-center overflow-hidden">
-                    <img id="img-profile" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=500&q=80" alt="Foto Grup" class="object-cover w-full h-full">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Profil & Deskripsi Grup</h2>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="w-full md:w-1/3 bg-gray-200 rounded-xl aspect-square overflow-hidden shadow-inner">
+                    <img id="img-profile" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=500" alt="Foto Grup" class="object-cover w-full h-full">
                 </div>
                 <div class="flex-1">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Tentang Bytesyntech</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Tuliskan deskripsi grup kamu di sini. Bytesyntech adalah tempat berkumpulnya murid-murid kreatif yang ingin belajar bersama tentang teknologi dan literasi.
+                    <h3 class="text-xl md:text-2xl font-semibold mb-4 text-gray-800">Tentang Bytesyntech</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
+                        Selamat datang di Bytesyntech! Kami adalah komunitas belajar yang berfokus pada pengembangan kreativitas dan teknologi di kalangan pelajar.
                     </p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Kamu bisa mengganti teks ini nanti di file index.html dengan teks aslimu sendiri.
+                    <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                        Gunakan kolom ini untuk mendeskripsikan tujuan grup Anda kepada pengunjung web.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- TEMPLATE HALAMAN 2-5: ARTIKEL -->
+        <!-- HALAMAN 2: ARTIKEL -->
         <section id="page2" class="page max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 1</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="list-page2">
-                <!-- Card Item -->
-                <div onclick="showDetail('Artikel Murid A', 'Deskripsi lengkap artikel murid A yang sangat menginspirasi...', 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Artikel Murid A</h4>
-                        <p class="text-gray-500 text-sm line-clamp-2">Klik untuk membaca detail artikel yang dibuat oleh murid berbakat ini.</p>
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Artikel Murid (Bagian 1)</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                
+                <!-- CARD 1 -->
+                <div onclick="showDetail('Teknologi AI di Sekolah', 'Deskripsi lengkap artikel murid A tentang pemanfaatan AI untuk membantu tugas sekolah...', 'https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=500')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer active:scale-95 transition">
+                    <img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=500" class="w-full h-40 md:h-48 object-cover">
+                    <div class="p-4 md:p-6">
+                        <h4 class="font-bold text-base md:text-lg mb-2">Teknologi AI di Sekolah</h4>
+                        <p class="text-gray-500 text-xs md:text-sm line-clamp-2">Klik untuk membaca bagaimana AI mengubah cara kita belajar.</p>
                     </div>
                 </div>
-                <!-- Card Item -->
-                <div onclick="showDetail('Artikel Murid B', 'Detail lengkap konten murid B...', 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=500&q=80')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer hover:shadow-md transition">
-                    <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=500&q=80" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-lg mb-2">Artikel Murid B</h4>
-                        <p class="text-gray-500 text-sm line-clamp-2">Deskripsi singkat karya tulis yang luar biasa.</p>
+
+                <!-- CARD 2 -->
+                <div onclick="showDetail('Budaya Literasi Digital', 'Ulasan mendalam tentang etika berkomunikasi di internet yang dibuat oleh murid B...', 'https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=500')" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer active:scale-95 transition">
+                    <img src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=500" class="w-full h-40 md:h-48 object-cover">
+                    <div class="p-4 md:p-6">
+                        <h4 class="font-bold text-base md:text-lg mb-2">Budaya Literasi Digital</h4>
+                        <p class="text-gray-500 text-xs md:text-sm line-clamp-2">Pentingnya menyaring informasi sebelum membagikannya.</p>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Halaman 3, 4, 5 (Strukturnya sama dengan Page 2) -->
-        <section id="page3" class="page max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 2</h2>
-            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
-        </section>
-        <section id="page4" class="page max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 3</h2>
-            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
-        </section>
-        <section id="page5" class="page max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Kumpulan Artikel Terbaik - Bagian 4</h2>
-            <p class="text-gray-500 italic">Tambahkan artikelmu di sini...</p>
-        </section>
+        <!-- HALAMAN 3, 4, 5 (Struktur Sama) -->
+        <section id="page3" class="page max-w-4xl mx-auto"> <h2 class="text-2xl md:text-3xl font-bold mb-6">Artikel Murid (Bagian 2)</h2> </section>
+        <section id="page4" class="page max-w-4xl mx-auto"> <h2 class="text-2xl md:text-3xl font-bold mb-6">Artikel Murid (Bagian 3)</h2> </section>
+        <section id="page5" class="page max-w-4xl mx-auto"> <h2 class="text-2xl md:text-3xl font-bold mb-6">Artikel Murid (Bagian 4)</h2> </section>
 
-        <!-- HALAMAN 6: TERIMA KASIH -->
+        <!-- HALAMAN 6: WA -->
         <section id="page6" class="page max-w-4xl mx-auto">
-            <div class="text-center py-20 bg-white rounded-3xl shadow-sm border border-gray-100">
-                <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <i data-lucide="thumbs-up" class="text-blue-600 w-10 h-10"></i>
+            <div class="text-center py-12 md:py-20 bg-white rounded-3xl shadow-sm border border-gray-100 px-4">
+                <div class="bg-blue-100 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i data-lucide="thumbs-up" class="text-blue-600 w-8 h-8 md:w-10 md:h-10"></i>
                 </div>
-                <h2 class="text-4xl font-bold mb-4">Terima Kasih!</h2>
-                <p class="text-gray-600 mb-8 max-w-md mx-auto">Kami sangat menghargai kunjungan Anda. Untuk mendapatkan update terbaru, silakan bergabung di channel WhatsApp kami.</p>
-                <a href="https://whatsapp.com/channel/xxxxxx" target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-green-600 transition shadow-lg shadow-green-200">
+                <h2 class="text-2xl md:text-4xl font-bold mb-4">Terima Kasih!</h2>
+                <p class="text-gray-600 mb-8 max-w-md mx-auto text-sm md:text-base">Terima kasih telah berkunjung. Klik tombol di bawah untuk bergabung di channel WhatsApp kami.</p>
+                <a href="https://whatsapp.com/channel/xxxxxx" target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-sm md:text-lg hover:bg-green-600 transition shadow-lg active:scale-95">
                     <i data-lucide="message-circle"></i> Buka Channel WhatsApp
                 </a>
             </div>
         </section>
 
-        <!-- VIEW DETAIL OVERLAY -->
-        <div id="detail-overlay" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto p-8">
-            <button onclick="closeDetail()" class="fixed top-8 right-8 bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition">
-                <i data-lucide="x"></i>
-            </button>
-            <div class="max-w-3xl mx-auto">
-                <img id="detail-img" src="" class="w-full h-80 object-cover rounded-2xl mb-8">
-                <h2 id="detail-title" class="text-4xl font-bold mb-6"></h2>
-                <div id="detail-content" class="text-lg text-gray-600 leading-relaxed space-y-4"></div>
+        <!-- DETAIL OVERLAY -->
+        <div id="detail-overlay" class="hidden fixed inset-0 bg-white z-[60] overflow-y-auto p-4 md:p-8">
+            <div class="max-w-3xl mx-auto relative pt-12 md:pt-0">
+                <button onclick="closeDetail()" class="absolute -top-2 md:top-0 right-0 bg-gray-100 p-3 rounded-full hover:bg-gray-200 transition">
+                    <i data-lucide="x"></i>
+                </button>
+                <img id="detail-img" src="" class="w-full h-56 md:h-80 object-cover rounded-2xl mb-6 md:mb-8">
+                <h2 id="detail-title" class="text-2xl md:text-4xl font-bold mb-4 md:mb-6"></h2>
+                <div id="detail-content" class="text-base md:text-lg text-gray-600 leading-relaxed space-y-4"></div>
             </div>
         </div>
 
     </main>
 
     <script>
-        // Inisialisasi Ikon
         lucide.createIcons();
 
-        // Navigasi Halaman
+        // Toggle Sidebar di Mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            if (sidebar.classList.contains('closed')) {
+                sidebar.classList.remove('closed');
+                sidebar.classList.add('open');
+                overlay.classList.remove('hidden');
+            } else {
+                sidebar.classList.remove('open');
+                sidebar.classList.add('closed');
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // Navigasi
         function showPage(pageId) {
-            // Sembunyikan semua halaman
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Tampilkan halaman terpilih
             document.getElementById(pageId).classList.add('active');
             
-            // Update UI Sidebar
             document.querySelectorAll('.sidebar-link').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + pageId).classList.add('active');
 
-            // Tutup detail jika sedang terbuka
+            // Tutup sidebar setelah pilih menu di mobile
+            if (window.innerWidth < 768) {
+                toggleSidebar();
+            }
             closeDetail();
+            // Scroll ke atas
+            document.querySelector('main').scrollTop = 0;
         }
 
-        // Fungsi Detail
         function showDetail(title, content, imgSrc) {
             const overlay = document.getElementById('detail-overlay');
             document.getElementById('detail-title').innerText = title;
             document.getElementById('detail-content').innerText = content;
             document.getElementById('detail-img').src = imgSrc;
             overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Stop scrolling body
         }
 
         function closeDetail() {
             document.getElementById('detail-overlay').classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>

@@ -1,84 +1,65 @@
-# File ini berfungsi sebagai "Database" sederhana agar kamu mudah mengubah isi kontennya.
+# File ini berfungsi sebagai "Database" sederhana.
 
 def get_profile_data():
     return {
         "group_name": "Byte Syntech Official",
         "description": """
             Byte Syntech School adalah sebuah grup pembelajaran yang berfokus pada pengembangan
-            dan pemahaman AI serta teknologi modern, dengan penekanan utama pada kecerdasan buatan,
-            yang menjadi wadah kolaboratif bagi para peserta untuk belajar, berbagi insight, mengasah keterampilan,
+            dan pemahaman AI serta teknologi modern. Kami menjadi wadah kolaboratif bagi para 
+            peserta untuk belajar, berbagi insight, mengasah keterampilan,
             dan mengikuti perkembangan teknologi masa depan secara kreatif dan inovatif.
 .
         """,
-        "image_url": "dwonload/Gemini_Generated_Image_id44k7id44k7id44.jpg"  # Ganti dengan path file foto kamu, misal: "assets/foto_grup.jpg"
+        # Pastikan file ini ada di folder yang sama atau gunakan URL internet
+        "image_url": "download/c:\\Users\\ACER\\Downloads\\Gemini_Generated_Image_kb0hkdkb0hkdkb0h.png" 
     }
 
 def get_articles_data(page_number):
-    # Simulasi data artikel untuk setiap halaman (2, 3, 4, 5)
-    # Kamu bisa menambahkan lebih banyak artikel di dalam list ini.
-    
+    # page_number 1-4 sesuai dengan Artikel Murid (1) s/d (4)
     all_pages = {
-        1: [ # Halaman 2
+        1: [
             {
-                "title": "Artikel NN",
-                "summary": "Deskripsi singkat tentang artikel NN...",
-                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
-                "image_url": "https://via.placeholder.com/300"
+                "title": "",
+                "summary": "Bagaimana AI mengubah cara kita belajar di kelas.",
+                "full_content": "Kecerdasan Buatan (AI) kini bukan lagi masa depan, melainkan masa kini. Di sekolah, AI membantu guru menilai tugas lebih cepat dan membantu siswa memahami materi lewat personalisasi pembelajaran.",
+                "image_url": "https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg"
             },
             {
-                "title": "Karya Literasi Murid B",
-                "summary": "Ringkasan singkat tentang karya B...",
-                "full_content": "Ini adalah detail dari karya literasi murid B.",
-                "image_url": "https://via.placeholder.com/300"
-            }
+                "title": "Best Artikel",
+                "summary": "Pentingnya menyaring informasi di internet.",
+                "full_content": "Literasi digital adalah kemampuan untuk memahami dan menggunakan informasi dari berbagai sumber digital secara efektif dan etis.",
+                "image_url": "https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg"
+            },
         ],
-        2: [ # Halaman 3
+        2: [
             {
-                "title": "Artikel NN",
-                "summary": "Deskripsi singkat tentang artikel NN...",
-                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
-                "image_url": "https://via.placeholder.com/300"
+                "title": "Best Student",
+                "summary": "Melihat teknologi yang akan populer di 2030.",
+                "full_content": "Dari Quantum Computing hingga mobil terbang, masa depan tampak sangat cerah bagi para pengembang teknologi.",
+                "image_url": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
             },
-            {
-                "title": "Karya Literasi Murid B",
-                "summary": "Ringkasan singkat tentang karya B...",
-                "full_content": "Ini adalah detail dari karya literasi murid B.",
-                "image_url": "https://via.placeholder.com/300"
-            }
         ],
-        3: [ # Halaman 4
-             {
-                "title": "Artikel NN",
-                "summary": "Deskripsi singkat tentang artikel NN...",
-                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
-                "image_url": "https://via.placeholder.com/300"
-            },
+        3: [
             {
-                "title": "Karya Literasi Murid B",
-                "summary": "Ringkasan singkat tentang karya B...",
-                "full_content": "Ini adalah detail dari karya literasi murid B.",
-                "image_url": "https://via.placeholder.com/300"
-            }
+                "title": "Best Reaction",
+                "summary": "Melihat teknologi yang akan populer di 2030.",
+                "full_content": "Dari Quantum Computing hingga mobil terbang, masa depan tampak sangat cerah bagi para pengembang teknologi.",
+                "image_url": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+            },
         ],
-        4: [ # Halaman 5
-             {
-                "title": "Artikel NN",
-                "summary": "Deskripsi singkat tentang artikel NN...",
-                "full_content": "Ini adalah isi lengkap dari artikel murid A yang sangat panjang dan detail.",
-                "image_url": "https://via.placeholder.com/300"
-            },
+        4: [
             {
-                "title": "Karya Literasi Murid B",
-                "summary": "Ringkasan singkat tentang karya B...",
-                "full_content": "Ini adalah detail dari karya literasi murid B.",
-                "image_url": "https://via.placeholder.com/300"
-            }
+                "title": "King and Queen",
+                "summary": "Melihat teknologi yang akan populer di 2030.",
+                "full_content": "Dari Quantum Computing hingga mobil terbang, masa depan tampak sangat cerah bagi para pengembang teknologi.",
+                "image_url": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+            },
         ]
     }
     return all_pages.get(page_number, [])
 
 def get_thanks_data():
     return {
-        "message": "Terima kasih telah berkunjung ke website kami!",
-        "whatsapp_link": "https://whatsapp.com/channel/xxxxxx" # Ganti dengan link channel WA kamu
+        "message": "Terima kasih telah berkunjung ke Official Website Bytesyntech. Kami sangat menghargai dukungan Anda!",
+        "whatsapp_link": "https://whatsapp.com/channel/xxxxxx" 
     }
