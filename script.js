@@ -1,71 +1,56 @@
-// =====================================
-// DATA ARTIKEL (EDIT DI SINI)
-// =====================================
-const articles = {
-  artikel1: {
-    title: "Best Student",
-    image: "images/student.jpg",
-    text: [
-      "Penghargaan Best Student diberikan kepada siswa dengan prestasi akademik terbaik.",
-      "Siswa ini menunjukkan dedikasi tinggi dalam belajar dan disiplin luar biasa."
-    ]
-  },
-
-  artikel2: {
-    title: "Best Reaction",
-    image: "images/reaction.jpg",
-    text: [
-      "Kategori Best Reaction diberikan kepada siswa dengan respon tercepat dan paling aktif.",
-      "Selalu bersemangat dalam setiap kegiatan kelas."
-    ]
-  },
-
-  artikel3: {
-    title: "Best Artikel",
-    image: "images/artikel.jpg",
-    text: [
-      "Best Artikel diberikan kepada siswa dengan tulisan terbaik.",
-      "Artikel dinilai dari kreativitas, struktur, dan isi."
-    ]
-  },
-
-  artikel4: {
-    title: "King and Queen",
-    image: "images/kingqueen.jpg",
-    text: [
-      "King and Queen adalah penghargaan untuk siswa paling inspiratif.",
-      "Mereka menjadi teladan bagi teman-temannya."
-    ]
-  }
-};
-
-// =====================================
-// PINDAH HALAMAN
-// =====================================
+// JAVASCRIPT LOGIC (DISATUKAN DI SINI)
 function showPage(pageId) {
-  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
-}
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-// =====================================
-// LOAD ARTIKEL
-// =====================================
-function loadArticle(id) {
-  document.getElementById(`title-${id}`).innerText = articles[id].title;
-  document.getElementById(`img-${id}`).src = articles[id].image;
+  // DATA ARTIKEL - EDIT_DI_SINI: Ganti link Pinterest untuk halaman detail
+  const articles = {
+    best_student: {
+      title: "Best Student Bulan Ini",
+      tag: "Prestasi",
+      image: "https://i.pinimg.com/originals/gambar_1.jpg", 
+      content: ["Selamat kepada murid terbaik atas dedikasi akademik yang luar biasa."]
+    },
+    best_reaction: {
+      title: "Best Reaction: Aura Positif",
+      tag: "Karakter",
+      image: "https://i.pinimg.com/originals/gambar_2.jpg",
+      content: ["Karakter yang kuat terpancar dari cara kita menghargai orang lain."]
+    },
+    best_artikel: {
+      title: "Best Artikel: Literasi Kreatif",
+      tag: "Kreativitas",
+      image: "https://i.pinimg.com/originals/gambar_3.jpg",
+      content: ["Menulis adalah cara terbaik untuk mengabadikan pemikiran."]
+    },
+    king_queen: {
+      title: "King & Queen: Ikon BSS",
+      tag: "Favorit",
+      image: "https://i.pinimg.com/originals/gambar_4.jpg",
+      content: ["Sosok King dan Queen menjadi teladan integritas bagi semua murid."]
+    }
+  };
 
-  const textContainer = document.getElementById(`text-${id}`);
-  textContainer.innerHTML = "";
+  function viewArticle(id) {
+    const data = articles[id];
+    if (!data) return;
+    const detailDiv = document.getElementById('article-content');
+    detailDiv.innerHTML = `
+      <div class="mb-12">
+        <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest">${data.tag}</span>
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mt-6 leading-tight tracking-tight">${data.title}</h2>
+      </div>
+      <div class="relative mb-12">
+        <img src="${data.image}" class="w-full h-96 md:h-[500px] object-cover rounded-[3rem] shadow-2xl border-8 border-white" onerror="this.src='https://via.placeholder.com/800x500'">
+      </div>
+      <div class="prose prose-2xl max-w-none text-slate-700 leading-relaxed font-medium italic">
+        ${data.content.map(p => `<p class="mb-6">"${p}"</p>`).join('')}
+      </div>
+    `;
+    showPage('detail');
+  }
 
-  articles[id].text.forEach(paragraph => {
-    const p = document.createElement("p");
-    p.innerText = paragraph;
-    textContainer.appendChild(p);
-  });
-}
-
-// LOAD SEMUA
-loadArticle("artikel1");
-loadArticle("artikel2");
-loadArticle("artikel3");
-loadArticle("artikel4");
+  document.addEventListener('DOMContentLoaded', () => showPage('home'));

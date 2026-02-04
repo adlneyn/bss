@@ -3,71 +3,204 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bytestynch - Grup & Artikel Murid</title>
+  <title>Bytestynch - Portal Artikel</title>
 
+  <!-- Menggunakan Tailwind CSS untuk desain yang modern -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
     .page { display: none; }
     .page.active { display: block; }
+    
+    .fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .article-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-900">
 
-<div class="flex min-h-screen">
+<div class="flex flex-col md:flex-row min-h-screen">
 
-  <!-- SIDEBAR -->
-  <aside class="w-64 bg-[#3b82f6] text-white p-6">
-    <h1 class="text-xl font-bold mb-6">Bytestynch</h1>
-    <nav class="space-y-2">
-      <button onclick="showPage('home')" class="block w-full text-left hover:bg-blue-700 p-2 rounded">Beranda</button>
-      <button onclick="showPage('artikel1')" class="block w-full text-left hover:bg-blue-700 p-2 rounded">Best Student</button>
-      <button onclick="showPage('artikel2')" class="block w-full text-left hover:bg-blue-700 p-2 rounded">Best Reaction</button>
-      <button onclick="showPage('artikel3')" class="block w-full text-left hover:bg-blue-700 p-2 rounded">Best Artikel</button>
-      <button onclick="showPage('artikel4')" class="block w-full text-left hover:bg-blue-700 p-2 rounded">King and Queen</button>
+  <!-- BAGIAN SIDEBAR (NAVIGASI KIRI) -->
+  <aside class="w-full md:w-72 bg-blue-700 text-white p-8 shadow-2xl z-20">
+    <div class="flex items-center justify-between md:block">
+      <div class="flex items-center space-x-4 cursor-pointer group" onclick="showPage('home')">
+        
+        <!-- EDIT_DI_SINI: Ganti link di bawah dengan Link Pinterest LOGO Anda -->
+        <img src="https://pin.it/2ePabNKpu" alt="Logo" class="w-12 h-12 rounded-2xl bg-white p-1 object-contain shadow-lg" onerror="this.src='https://via.placeholder.com/48?text=BSS'">
+        
+        <div>
+          <h1 class="text-2xl font-black tracking-tighter">Bytestynch</h1>
+          <p class="text-[10px] text-blue-200 font-bold uppercase tracking-widest">Official Web BSS</p>
+        </div>
+      </div>
+      <button onclick="showPage('home')" class="md:hidden bg-blue-800 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider">Beranda</button>
+    </div>
+    
+    <nav class="hidden md:block mt-12 space-y-3">
+      <button onclick="showPage('home')" class="block w-full text-left hover:bg-blue-600 p-4 rounded-2xl transition-all duration-200 font-semibold shadow-sm text-sm text-white">Beranda</button>
+      <div class="pt-8 pb-3 px-4 text-[10px] font-black uppercase tracking-[0.3em] text-blue-300 opacity-60">Kategori</div>
+      
+      <button onclick="viewArticle('best_student')" class="block w-full text-left hover:bg-blue-600 p-4 rounded-2xl transition text-sm text-white">Best Student</button>
+      <button onclick="viewArticle('best_reaction')" class="block w-full text-left hover:bg-blue-600 p-4 rounded-2xl transition text-sm text-white">Best Reaction</button>
+      <button onclick="viewArticle('best_artikel')" class="block w-full text-left hover:bg-blue-600 p-4 rounded-2xl transition text-sm text-white">Best Artikel</button>
+      <button onclick="viewArticle('king_queen')" class="block w-full text-left hover:bg-blue-600 p-4 rounded-2xl transition text-sm text-white">King and Queen</button>
     </nav>
   </aside>
 
-  <!-- KONTEN -->
-  <main class="flex-1 p-8">
+  <!-- BAGIAN KONTEN UTAMA -->
+  <main class="flex-1 p-6 md:p-16 overflow-y-auto">
 
-    <!-- BERANDA -->
-    <section id="Home" class="page active">
-      <h2 class="text-2xl font-bold mb-4">Selamat Datang</h2>
-      <p>Website ini berisi kumpulan siswa/i terbaik BSS.</p>
-      <img src="download/c:\\Users\\ACER\\Downloads\\Gemini_Generated_Image_kb0hkdkb0hkdkb0h.png" alt="Bytestynch Logo" class="w-48 mt-4" />
+    <!-- HALAMAN BERANDA (HOME) -->
+    <section id="home" class="page active fade-in">
+      <header class="mb-12 max-w-3xl">
+        <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">Inspirasi Murid</h2>
+        <p class="text-slate-500 mt-4 text-lg font-medium">Kumpulan prestasi, kreativitas, dan karakter terbaik dari Byte Syntech School.</p>
+      </header>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+        
+        <!-- KOTAK 1 -->
+        <div onclick="viewArticle('best_student')" class="article-card group bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+          <img src="https://i.pinimg.com/originals/gambar_1.jpg" alt="Student" class="w-full h-64 object-cover" onerror="this.src='https://images.unsplash.com/photo-1523240715181-014b9f30d741?auto=format&fit=crop&w=800'">
+          <div class="p-8">
+            <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.2em]">Prestasi</span>
+            <h3 class="text-2xl font-bold mt-3">Best Student</h3>
+            <p class="text-slate-500 text-sm mt-3 leading-relaxed">Pencapaian akademik luar biasa murid terpilih bulan ini.</p>
+          </div>
+        </div>
+
+        <!-- KOTAK 2 -->
+        <div onclick="viewArticle('best_reaction')" class="article-card group bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+          <img src="https://i.pinimg.com/originals/gambar_2.jpg" alt="Reaction" class="w-full h-64 object-cover" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800'">
+          <div class="p-8">
+            <span class="text-emerald-600 text-[10px] font-black uppercase tracking-[0.2em]">Karakter</span>
+            <h3 class="text-2xl font-bold mt-3">Best Reaction</h3>
+            <p class="text-slate-500 text-sm mt-3 leading-relaxed">Interaksi sosial yang positif dan membangun atmosfer belajar.</p>
+          </div>
+        </div>
+
+        <!-- KOTAK 3 -->
+        <div onclick="viewArticle('best_artikel')" class="article-card group bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+          <img src="https://i.pinimg.com/originals/gambar_3.jpg" alt="Artikel" class="w-full h-64 object-cover" onerror="this.src='https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800'">
+          <div class="p-8">
+            <span class="text-purple-600 text-[10px] font-black uppercase tracking-[0.2em]">Kreativitas</span>
+            <h3 class="text-2xl font-bold mt-3">Best Artikel</h3>
+            <p class="text-slate-500 text-sm mt-3 leading-relaxed">Tulisan mendalam yang memberikan wawasan baru bagi pembaca.</p>
+          </div>
+        </div>
+
+        <!-- KOTAK 4 -->
+        <div onclick="viewArticle('king_queen')" class="article-card group bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+          <img src="https://i.pinimg.com/originals/gambar_4.jpg" alt="King Queen" class="w-full h-64 object-cover" onerror="this.src='https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800'">
+          <div class="p-8">
+            <span class="text-pink-600 text-[10px] font-black uppercase tracking-[0.2em]">Favorit</span>
+            <h3 class="text-2xl font-bold mt-3">King and Queen</h3>
+            <p class="text-slate-500 text-sm mt-3 leading-relaxed">Representasi siswa ideal yang menjadi teladan bagi semua.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER: TOMBOL LEARN MORE -->
+      <div class="py-16 border-t border-slate-200 flex flex-col items-center">
+        <!-- EDIT_DI_SINI: Ganti link WhatsApp Anda di bawah -->
+        <a href="https://whatsapp.com/channel/link_anda" target="_blank" class="flex items-center space-x-3 bg-slate-900 text-white px-10 py-5 rounded-full font-bold text-sm tracking-widest hover:bg-blue-600 transition-all duration-300 hover:shadow-2xl shadow-lg">
+          <span>LEARN MORE</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <p class="text-slate-400 text-[10px] mt-6 font-bold uppercase tracking-[0.2em] text-center">Gabung ke Channel WhatsApp untuk pembaruan rutin</p>
+      </div>
     </section>
 
-    <!-- TEMPLATE ARTIKEL -->
-    <section id="Best Student" class="page">
-      <h2 id="title-artikel1" class="text-2xl font-bold mb-4"></h2>
-      <img id="img-artikel1" class="w-full max-w-xl rounded-lg shadow mb-4" />
-      <div id="text-artikel1" class="space-y-3"></div>
-    </section>
-
-    <section id="Best Reaction" class="page">
-      <h2 id="title-artikel2" class="text-2xl font-bold mb-4"></h2>
-      <img id="img-artikel2" class="w-full max-w-xl rounded-lg shadow mb-4" />
-      <div id="text-artikel2" class="space-y-3"></div>
-    </section>
-
-    <section id="Best Artikel" class="page">
-      <h2 id="title-artikel3" class="text-2xl font-bold mb-4"></h2>
-      <img id="img-artikel3" class="w-full max-w-xl rounded-lg shadow mb-4" />
-      <div id="text-artikel3" class="space-y-3"></div>
-    </section>
-
-    <section id="King and Queen" class="page">
-      <h2 id="title-artikel4" class="text-2xl font-bold mb-4"></h2>
-      <img id="img-artikel4" class="w-full max-w-xl rounded-lg shadow mb-4" />
-      <div id="text-artikel4" class="space-y-3"></div>
+    <!-- HALAMAN RINCIAN (DETAIL) -->
+    <section id="detail" class="page fade-in max-w-4xl mx-auto mb-20">
+      <button onclick="showPage('home')" class="flex items-center text-blue-600 font-bold mb-12 hover:bg-blue-50 px-6 py-3 rounded-2xl transition w-fit border border-blue-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Kembali ke Beranda
+      </button>
+      <div id="article-content"></div>
     </section>
 
   </main>
 </div>
 
-<script src="script.js"></script>
+<!-- JAVASCRIPT LOGIC (DISATUKAN DI SINI) -->
+<script>
+  function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) targetPage.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // DATA ARTIKEL - EDIT_DI_SINI: Ganti link Pinterest untuk halaman detail
+  const articles = {
+    best_student: {
+      title: "Best Student Bulan Ini",
+      tag: "Prestasi",
+      image: "https://i.pinimg.com/originals/gambar_1.jpg", 
+      content: ["Selamat kepada murid terbaik atas dedikasi akademik yang luar biasa."]
+    },
+    best_reaction: {
+      title: "Best Reaction: Aura Positif",
+      tag: "Karakter",
+      image: "https://i.pinimg.com/originals/gambar_2.jpg",
+      content: ["Karakter yang kuat terpancar dari cara kita menghargai orang lain."]
+    },
+    best_artikel: {
+      title: "Best Artikel: Literasi Kreatif",
+      tag: "Kreativitas",
+      image: "https://i.pinimg.com/originals/gambar_3.jpg",
+      content: ["Menulis adalah cara terbaik untuk mengabadikan pemikiran."]
+    },
+    king_queen: {
+      title: "King & Queen: Ikon BSS",
+      tag: "Favorit",
+      image: "https://i.pinimg.com/originals/gambar_4.jpg",
+      content: ["Sosok King dan Queen menjadi teladan integritas bagi semua murid."]
+    }
+  };
+
+  function viewArticle(id) {
+    const data = articles[id];
+    if (!data) return;
+    const detailDiv = document.getElementById('article-content');
+    detailDiv.innerHTML = `
+      <div class="mb-12">
+        <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest">${data.tag}</span>
+        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mt-6 leading-tight tracking-tight">${data.title}</h2>
+      </div>
+      <div class="relative mb-12">
+        <img src="${data.image}" class="w-full h-96 md:h-[500px] object-cover rounded-[3rem] shadow-2xl border-8 border-white" onerror="this.src='https://via.placeholder.com/800x500'">
+      </div>
+      <div class="prose prose-2xl max-w-none text-slate-700 leading-relaxed font-medium italic">
+        ${data.content.map(p => `<p class="mb-6">"${p}"</p>`).join('')}
+      </div>
+    `;
+    showPage('detail');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => showPage('home'));
+</script>
+
 </body>
 </html>
