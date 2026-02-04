@@ -1,31 +1,46 @@
 // =====================================
-// DATA ARTIKEL (EDIT SEMUA DI SINI)
+// DATA ARTIKEL (EDIT DI SINI)
 // =====================================
-
 const articles = {
   artikel1: {
-    title: "Kegiatan Belajar Coding",
-    image: "https://picsum.photos/800/400?random=1", // GANTI LINK FOTO DI SINI
+    title: "Best Student",
+    image: "images/student.jpg",
     text: [
-      "Hari ini kami belajar dasar-dasar pemrograman web.",
-      "Materi yang dipelajari meliputi HTML, CSS, dan JavaScript.",
-      "Semua murid sangat antusias mengikuti kegiatan ini."
+      "Penghargaan Best Student diberikan kepada siswa dengan prestasi akademik terbaik.",
+      "Siswa ini menunjukkan dedikasi tinggi dalam belajar dan disiplin luar biasa."
     ]
   },
 
   artikel2: {
-    title: "Proyek Website Pertama",
-    image: "https://picsum.photos/800/400?random=2", // GANTI LINK FOTO DI SINI
+    title: "Best Reaction",
+    image: "images/reaction.jpg",
     text: [
-      "Murid-murid membuat website sederhana sebagai proyek pertama.",
-      "Website berisi profil, galeri, dan artikel kegiatan.",
-      "Proyek ini membantu memahami struktur halaman web."
+      "Kategori Best Reaction diberikan kepada siswa dengan respon tercepat dan paling aktif.",
+      "Selalu bersemangat dalam setiap kegiatan kelas."
+    ]
+  },
+
+  artikel3: {
+    title: "Best Artikel",
+    image: "images/artikel.jpg",
+    text: [
+      "Best Artikel diberikan kepada siswa dengan tulisan terbaik.",
+      "Artikel dinilai dari kreativitas, struktur, dan isi."
+    ]
+  },
+
+  artikel4: {
+    title: "King and Queen",
+    image: "images/kingqueen.jpg",
+    text: [
+      "King and Queen adalah penghargaan untuk siswa paling inspiratif.",
+      "Mereka menjadi teladan bagi teman-temannya."
     ]
   }
 };
 
 // =====================================
-// FUNGSI PINDAH HALAMAN
+// PINDAH HALAMAN
 // =====================================
 function showPage(pageId) {
   document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
@@ -33,7 +48,7 @@ function showPage(pageId) {
 }
 
 // =====================================
-// FUNGSI MENAMPILKAN ARTIKEL
+// LOAD ARTIKEL
 // =====================================
 function loadArticle(id) {
   document.getElementById(`title-${id}`).innerText = articles[id].title;
@@ -49,8 +64,8 @@ function loadArticle(id) {
   });
 }
 
-// Load semua artikel saat halaman dibuka
-loadArticle("Best Student");
-loadArticle("Best Reaction");
-loadArticle("Best Artikel");
-loadArticle("King and Queen");
+// LOAD SEMUA
+loadArticle("artikel1");
+loadArticle("artikel2");
+loadArticle("artikel3");
+loadArticle("artikel4");
