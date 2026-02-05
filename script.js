@@ -9,25 +9,25 @@ function showPage(pageId) {
   // DATA ARTIKEL - EDIT_DI_SINI: Ganti link Pinterest untuk halaman detail
   const articles = {
     best_student: {
-      title: "Best Student Bulan Ini",
+      title: "Best Student",
       tag: "Kategori 01",
       image: "", 
       content: ["[nanti bakal ada chara'nn dan foto bukti dari best student]."]
     },
     best_reaction: {
-      title: "Best Reaction Bulan Ini",
+      title: "Best Reaction",
       tag: "Kategori 02",
       image: "", 
       content: ["[nanti bakal ada chara'nn dan foto bukti dari best reaction]."]
     },
     best_artikel: {
-      title: "Best Artikel Bulan Ini",
+      title: "Best Artikel",
       tag: "Kategori 03",
       image: "", 
       content: ["[nanti bakal ada chara'nn dan foto bukti dari best artikel]."]
     },
     king_queen: {
-      title: "King and Queen Bulan Ini",
+      title: "King and Queen",
       tag: "Kategori 04",
       image: "", 
       content: ["[nanti bakal ada chara'nn dan foto bukti dari king dan queen]."]
