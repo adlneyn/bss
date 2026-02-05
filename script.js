@@ -10,27 +10,27 @@ function showPage(pageId) {
   const articles = {
     best_student: {
       title: "Best Student Bulan Ini",
-      tag: "Prestasi",
-      image: "https://i.pinimg.com/originals/gambar_1.jpg", 
-      content: ["Selamat kepada murid terbaik atas dedikasi akademik yang luar biasa."]
+      tag: "Kategori 01",
+      image: "", 
+      content: ["[nanti bakal ada chara'nn dan foto bukti dari best student]."]
     },
     best_reaction: {
-      title: "Best Reaction: Aura Positif",
-      tag: "Karakter",
-      image: "https://i.pinimg.com/originals/gambar_2.jpg",
-      content: ["Karakter yang kuat terpancar dari cara kita menghargai orang lain."]
+      title: "Best Reaction Bulan Ini",
+      tag: "Kategori 02",
+      image: "", 
+      content: ["[nanti bakal ada chara'nn dan foto bukti dari best reaction]."]
     },
     best_artikel: {
-      title: "Best Artikel: Literasi Kreatif",
-      tag: "Kreativitas",
-      image: "https://i.pinimg.com/originals/gambar_3.jpg",
-      content: ["Menulis adalah cara terbaik untuk mengabadikan pemikiran."]
+      title: "Best Artikel Bulan Ini",
+      tag: "Kategori 03",
+      image: "", 
+      content: ["[nanti bakal ada chara'nn dan foto bukti dari best artikel]."]
     },
     king_queen: {
-      title: "King & Queen: Ikon BSS",
-      tag: "Favorit",
-      image: "https://i.pinimg.com/originals/gambar_4.jpg",
-      content: ["Sosok King dan Queen menjadi teladan integritas bagi semua murid."]
+      title: "King and Queen Bulan Ini",
+      tag: "Kategori 04",
+      image: "", 
+      content: ["[nanti bakal ada chara'nn dan foto bukti dari king dan queen]."]
     }
   };
 
