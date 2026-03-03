@@ -64,6 +64,14 @@
             border-radius: 1.5rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             background-color: #e2e8f0;
+            display: block;
+        }
+
+        /* aku mengubah ukuran kategori di sini */
+        .detail-img-small {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -74,7 +82,6 @@
     <!-- SIDEBAR -->
     <aside class="w-full md:w-72 bg-blue-700 text-white p-6 md:p-8 shadow-2xl z-20 flex-shrink-0 sticky top-0 md:h-screen">
         <div class="flex items-center justify-between md:block">
-            <!-- Bagian Logo yang kamu tanyakan -->
             <div class="flex items-center space-x-4 cursor-pointer group" onclick="showPage('home')">
                 <img 
                     src="https://i.pinimg.com/736x/ce/fd/ca/cefdcaf5a110b6bde47e2196446f1759.jpg" 
@@ -119,11 +126,11 @@
             </header>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 mb-20">
-                <!-- Card 1 -->
+                <!-- Card 1 - Perbaikan tinggi agar foto pas -->
                 <div onclick="viewArticle('about_bss')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
+                    <div class="h-48 md:h-64 bg-slate-100 flex items-center justify-center overflow-hidden">
                         <img src="https://i.pinimg.com/1200x/64/5d/a4/645da496564ba48624bf7834220d17a9.jpg" alt="Tentang BSS" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                        <span class="text-slate-300 font-bold italic">Preview Image</span>
+                        <span class="text-slate-300 font-bold italic hidden">Preview Image</span>
                     </div>
                     <div class="p-6">
                         <span class="text-blue-600 text-[10px] font-black uppercase tracking-widest">Kategori 01</span>
@@ -133,7 +140,7 @@
 
                 <!-- Card 2 -->
                 <div onclick="viewArticle('jajaran_team')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
+                    <div class="h-48 md:h-64 bg-slate-100 flex items-center justify-center">
                         <span class="text-slate-300 font-bold italic">Preview Image</span>
                     </div>
                     <div class="p-6">
@@ -144,7 +151,7 @@
 
                 <!-- Card 3 -->
                 <div onclick="viewArticle('king_queen')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
+                    <div class="h-48 md:h-64 bg-slate-100 flex items-center justify-center">
                         <span class="text-slate-300 font-bold italic">Preview Image</span>
                     </div>
                     <div class="p-6">
@@ -155,34 +162,12 @@
 
                 <!-- Card 4 -->
                 <div onclick="viewArticle('best_student')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
+                    <div class="h-48 md:h-64 bg-slate-100 flex items-center justify-center">
                         <span class="text-slate-300 font-bold italic">Preview Image</span>
                     </div>
                     <div class="p-6">
                         <span class="text-emerald-600 text-[10px] font-black uppercase tracking-widest">Kategori 04</span>
                         <h3 class="text-xl font-bold mt-2">Best Student</h3>
-                    </div>
-                </div>
-                
-                <!-- Card 5 -->
-                <div onclick="viewArticle('best_presentasi')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
-                        <span class="text-slate-300 font-bold italic">Preview Image</span>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-purple-600 text-[10px] font-black uppercase tracking-widest">Kategori 05</span>
-                        <h3 class="text-xl font-bold mt-2">Best Presentasi</h3>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div onclick="viewArticle('best_reaction')" class="article-card bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="h-48 md:h-60 bg-slate-100 flex items-center justify-center">
-                        <span class="text-slate-300 font-bold italic">Preview Image</span>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-pink-600 text-[10px] font-black uppercase tracking-widest">Kategori 06</span>
-                        <h3 class="text-xl font-bold mt-2">Best Reaction</h3>
                     </div>
                 </div>
             </div>
@@ -204,28 +189,23 @@
 </div>
 
 <script>
-    /**
-     * DATA ARTIKEL
-     */
     const articles = {
         about_bss: {
             title: "About BSS",
             tag: "Kategori 01",
             image: "https://i.pinimg.com/1200x/64/5d/a4/645da496564ba48624bf7834220d17a9.jpg",
+            isSmall: true, // Marker untuk mengecilkan foto di detail
             content: [
                 "Byte Syntech School (BSS) merupakan sebuah institusi pendidikan yang berfokus pada bidang teknologi, khususnya Artificial Intelligence (AI). Sekolah ini menjadi wadah pembelajaran bagi siswa dan siswi yang ingin memahami perkembangan teknologi secara lebih mendalam, terutama dalam bidang kecerdasan buatan.",
                 "Byte Syntech School didirikan pada tanggal 26 Januari 2026 dan secara resmi diresmikan pada tanggal 5 Maret 2026. Sejak berdirinya, BSS berkomitmen untuk memberikan pembelajaran yang terarah dan relevan dengan perkembangan zaman.",
                 "Dalam proses pembelajarannya, BSS tidak hanya membahas konsep dasar AI, tetapi juga mengenalkan sejarah perkembangan kecerdasan buatan serta berbagai tools atau perangkat yang digunakan dalam pembuatan dan pengembangannya. Dengan demikian, siswa dan siswi tidak hanya memahami teori, tetapi juga memiliki gambaran praktis mengenai dunia AI secara menyeluruh.",
             ]
         },
-        // masukkin semua id card di sini
         jajaran_team: {
             title: "Jajaran Team",
             tag: "Kategori 02",
             image: "https://i.pinimg.com/736x/ce/fd/ca/cefdcaf5a110b6bde47e2196446f1759.jpg",
-            content: [
-                "[Berisi jajaran team].",
-            ]
+            content: ["[Berisi jajaran team]."]
         },
         king_queen: {
             title: "King & Queen",
@@ -253,37 +233,19 @@
         }
     };
 
-    /**
-     * FUNGSI NAVIGASI
-     */
     function showPage(pageId) {
-        // Sembunyikan semua halaman
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        
-        // Tampilkan halaman target
         const target = document.getElementById(pageId);
         if (target) target.classList.add('active');
-        
-        // Scroll ke atas
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Update status tombol navigasi sidebar
         document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
         if (pageId === 'home') {
-            const homeLink = document.getElementById('nav-home');
-            if (homeLink) homeLink.classList.add('active');
+            document.getElementById('nav-home').classList.add('active');
         }
-
-        // Tutup menu mobile jika sedang terbuka
         const nav = document.getElementById('sidebar-nav');
-        if (window.innerWidth < 768 && nav) {
-            nav.classList.add('hidden');
-        }
+        if (window.innerWidth < 768 && nav) nav.classList.add('hidden');
     }
 
-    /**
-     * FUNGSI TAMPILKAN ARTIKEL
-     */
     function viewArticle(id) {
         const data = articles[id];
         if (!data) return;
@@ -303,21 +265,14 @@
                 ${data.content.map(text => `<p class="mb-4">"${text}"</p>`).join('')}
             </div>
         `;
-
         showPage('detail');
     }
 
-    /**
-     * INISIALISASI
-     */
     document.addEventListener('DOMContentLoaded', () => {
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const nav = document.getElementById('sidebar-nav');
-        
         if (mobileBtn && nav) {
-            mobileBtn.addEventListener('click', () => {
-                nav.classList.toggle('hidden');
-            });
+            mobileBtn.addEventListener('click', () => nav.classList.toggle('hidden'));
         }
     });
 </script>
